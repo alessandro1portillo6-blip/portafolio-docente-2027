@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Docente - Roberto Alessandro Portillo López</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        laravel: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#ff2d20',
+                            600: '#e11d48',
+                            700: '#be123c',
+                        },
+                        enm: {
+                            blue: '#1980b6',
+                            lightblue: '#e3f2fd',
+                            gold: '#e2a30b',
+                            green: '#72b025',
+                            dark: '#0f3a53',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar for sidebar & right panel */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans text-slate-800 antialiased overflow-hidden">
+
+    <!-- Top Bar Navigation Header -->
+    <header class="bg-gradient-to-r from-enm-dark via-enm-blue to-cyan-700 text-white shadow-md z-30 shrink-0">
+        <div class="px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-slate-200 focus:outline-none p-1">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <!-- Badge Shield Graphic SVG Inspired by Attachment -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-white p-1 flex items-center justify-center shadow-md">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <!-- Shield Outer -->
+                            <path d="M50,5 L90,20 L85,65 Q80,90 50,98 Q20,90 15,65 L10,20 Z" fill="#ffffff" stroke="#1980b6" stroke-width="4"/>
+                            <!-- Honduras map highlight/sun -->
+                            <circle cx="35" cy="50" r="12" fill="#e2a30b" opacity="0.8"/>
+                            <path d="M20,55 Q50,40 80,55 Q70,75 50,80 Q30,75 20,55 Z" fill="#72b025" opacity="0.8"/>
+                            <!-- Ribbon -->
+                            <path d="M10,85 L90,85 L80,95 L20,95 Z" fill="#1980b6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xs sm:text-sm md:text-base font-bold leading-tight tracking-wide uppercase">
+                            Escuela Normal Mixta Bilingüe "Prof. Miguel Ángel Chinchilla Solís"
+                        </h1>
+                        <p class="text-[10px] sm:text-xs text-sky-200 font-medium">Ocotepeque, Honduras • Enseñanza y Progreso (1879)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Docente Profile Info -->
+            <div class="flex items-center space-x-3 pl-2 border-l border-sky-400/30">
+                <div class="hidden sm:block text-right">
+                    <div class="text-xs text-sky-200 uppercase tracking-wider font-semibold">Docente Titular</div>
+                    <div class="text-sm font-bold text-white leading-tight">Roberto Alessandro Portillo López</div>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 p-0.5 shadow">
+                    <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        RP
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container: Fixed Sidebar + Scrollable Content -->
+    <div class="flex-1 flex overflow-hidden relative">
+
+        <!-- Fixed Left Sidebar (Laravel Admin Style) -->
+        <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-20 w-64 bg-slate-900 text-slate-300 flex flex-col transition-transform duration-300 transform -translate-x-full md:translate-x-0 shadow-xl shrink-0">
+            <!-- App Branding -->
+            <div class="p-4 bg-slate-950/60 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="p-1.5 rounded bg-laravel-500 text-white font-bold text-xs"><i class="fa-solid fa-square-poll-vertical"></i></span>
+                    <span class="font-semibold text-white tracking-wide text-sm">Laravel Portfolio v2.7</span>
+                </div>
+                <span class="text-[10px] bg-sky-950 text-sky-400 border border-sky-800 px-2 py-0.5 rounded-full font-mono">2027</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+                <div class="px-3 py-2 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                    General
+                </div>
+                
+                <button onclick="switchTab('dashboard')" class="nav-btn active flex items-center w-full px-3 py-2.5 text-xs font-medium rounded-lg transition-colors text-slate-300 hover:bg-slate-800 hover:text-white" data-tab="dashboard">
+                    <i class="fa-solid fa-gauge-high w-5 text-center mr-2 text-sky-400"></i>
+                    <span>Dashboard / Resumen</span>
+                </button>
+
+                <button onclick="switchTab('institucional')" class="nav-btn flex items-center w-full px-3 py-2.5 text-xs font-medium rounded-lg transition-colors text-slate-300 hover:bg-slate-800 hover:text-white" data-tab="institucional">
+                    <i class="fa-solid fa-school w-5 text-center mr-2 text-amber-400"></i>
+                    <span>Datos Institucionales</span>
+                </button>
+
+                <button onclick="switchTab('filosofia')" class="nav-btn flex items-center w-full px-3 py-2.5 text-xs font-medium rounded-lg transition-colors text-slate-300 hover:bg-slate-800 hover:text-white" data-tab="filosofia">
+                    <i class="fa-solid fa-book-open-reader w-5 text-center mr-2 text-emerald-400"></i>
+                    <span>Filosofía Docente</span>
+                </button>
+
+                <div class="px-3 py-2 mt-4 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                    Gestión Académica
+                </div>
+
+                <button onclick="switchTab('planificacion')" class="nav-btn flex items-center w-full px-3 py-2.5 text-xs font-medium rounded-lg transition-colors text-slate-300 hover:bg-slate-800 hover:text-white" data-tab="planificacion">
+                    <i class="fa-solid fa-calendar-check w-5 text-center mr-2 text-laravel-500"></i>
+                    <span>Planificación Didáctica</span>
+                    <span class="ml-auto bg-laravel-500/20 text-laravel-500 text-[10px] font-bold px-1.5 py-0.5 rounded">10 Meses</span>
+                </button>
+
+                <button onclick="switchTab('asistencia')" class="nav-btn flex items-center w-full px-3 py-2.5 text-xs font-medium rounded-lg transition-colors text-slate-300 hover:bg-slate-800 hover:text-white" data-tab="asistencia">
+                    <i class="fa-solid fa-clipboard-user w-5 text-center mr-2 text-indigo-400"></i>
+                    <span>Asistencia y Control</span>
+                </button>
+
+                <button onclick="switchTab('evaluacion')" class="nav-btn flex items-center w-full px-3 py-2.5 text-xs font-medium rounded-lg transition-colors text-slate-300 hover:bg-slate-800 hover:text-white" data-tab="evaluacion">
+                    <i class="fa-solid fa-chart-line w-5 text-center mr-2 text-purple-400"></i>
+                    <span>Criterios y Notas</span>
+                </button>
+
+                <button onclick="switchTab('anexos')" class="nav-btn flex items-center w-full px-3 py-2.5 text-xs font-medium rounded-lg transition-colors text-slate-300 hover:bg-slate-800 hover:text-white" data-tab="anexos">
+                    <i class="fa-solid fa-images w-5 text-center mr-2 text-pink-400"></i>
+                    <span>Anexos y Evidencias</span>
+                </button>
+            </nav>
+
+            <!-- Docente Footer Info -->
+            <div class="p-3 bg-slate-950 border-t border-slate-800 text-xs">
+                <div class="text-slate-400 text-[11px]">Docente:</div>
+                <div class="font-semibold text-white truncate">Roberto A. Portillo López</div>
+                <div class="text-[10px] text-slate-500 mt-1">Año Lectivo: <span class="text-amber-400">2027</span></div>
+            </div>
+        </aside>
+
+        <!-- Overlay for Mobile Sidebar -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-10 hidden md:hidden"></div>
+
+        <!-- Main Content Area (Scrollable Independent Content) -->
+        <main class="flex-1 overflow-y-auto bg-slate-50 p-4 md:p-6">
+            
+            <!-- SECTION 1: DASHBOARD / RESUMEN -->
+            <section id="dashboard" class="tab-content active space-y-6">
+                <!-- Welcome Banner -->
+                <div class="bg-gradient-to-r from-slate-900 via-enm-dark to-enm-blue rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                    <div class="relative z-10 max-w-3xl">
+                        <span class="bg-amber-400/20 text-amber-300 border border-amber-400/40 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">
+                            <i class="fa-solid fa-star mr-1"></i> Portafolio Digital Oficial 2027
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                            Bienvenido, Prof. Roberto Alessandro Portillo López
+                        </h2>
+                        <p class="mt-2 text-sky-100 text-sm leading-relaxed">
+                            Sistema Integral de Gestión Didáctica, Seguimiento de Planificaciones Semanales y Control Académico de la <strong>Escuela Normal Mixta Bilingüe Profesor Miguel Ángel Chinchilla Solís</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200 flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 font-medium uppercase">Bloques Mensuales</div>
+                            <div class="text-2xl font-bold text-slate-800">10 Meses</div>
+                            <div class="text-[11px] text-emerald-600 font-medium">Feb - Nov 2027</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200 flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-laravel-50 text-laravel-500 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 font-medium uppercase">Semanas Totales</div>
+                            <div class="text-2xl font-bold text-slate-800">42 Semanas</div>
+                            <div id="upload-progress-text" class="text-[11px] text-slate-500 font-medium">0 Cargas Realizadas</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200 flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 font-medium uppercase">Exámenes / Remediales</div>
+                            <div class="text-2xl font-bold text-slate-800">8 Módulos</div>
+                            <div class="text-[11px] text-amber-600 font-medium">Trimestrales</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200 flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-500 font-medium uppercase">Sede Institucional</div>
+                            <div class="text-lg font-bold text-slate-800">Ocotepeque</div>
+                            <div class="text-[11px] text-slate-500 font-medium">Honduras, C.A.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Card Details -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h3 class="text-base font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100 flex items-center">
+                        <i class="fa-solid fa-address-card text-enm-blue mr-2"></i> Ficha General del Docente
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                        <div>
+                            <span class="text-slate-400 block text-xs">Nombre Completo</span>
+                            <span class="font-bold text-slate-800 text-base">Roberto Alessandro Portillo López</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-xs">Centro Educativo</span>
+                            <span class="font-semibold text-slate-800">Escuela Normal Mixta Bilingüe "Prof. Miguel Ángel Chinchilla Solís"</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-xs">Jornada / Modalidad</span>
+                            <span class="font-semibold text-slate-800">Matutina / Presencial - Bilingüe</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-xs">Ubicación</span>
+                            <span class="font-semibold text-slate-800">Ocotepeque, Ocotepeque</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-xs">Año Escolar</span>
+                            <span class="font-semibold text-slate-800">2027</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-xs">Estatus de Portafolio</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                                <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-500 rounded-full"></span> Activo
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: DATOS INSTITUCIONALES -->
+            <section id="institucional" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100">
+                        <div class="w-12 h-12 rounded-xl bg-enm-lightblue text-enm-blue flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-800">Información Institucional</h2>
+                            <p class="text-xs text-slate-500">Escuela Normal Mixta Bilingüe "Prof. Miguel Ángel Chinchilla Solís"</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Misión -->
+                        <div class="p-5 rounded-xl bg-sky-50/50 border border-sky-100">
+                            <h3 class="font-bold text-sky-900 text-base mb-2 flex items-center">
+                                <i class="fa-solid fa-bullseye text-sky-600 mr-2"></i> Misión
+                            </h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Somos una institución educativa pública de alto nivel, orientada a formar profesionales integrales, bilingües y con profundos valores éticos y morales en el departamento de Ocotepeque, capacitados para responder activamente a las demandas del desarrollo socioeducativo del país.
+                            </p>
+                        </div>
+
+                        <!-- Visión -->
+                        <div class="p-5 rounded-xl bg-amber-50/50 border border-amber-100">
+                            <h3 class="font-bold text-amber-900 text-base mb-2 flex items-center">
+                                <i class="fa-solid fa-eye text-amber-600 mr-2"></i> Visión
+                            </h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Ser una institución líder y referente en educación bilingüe e innovación pedagógica a nivel nacional e internacional, destacada por la excelencia académica, la vocación de servicio y el lema histórico de <em>Enseñanza y Progreso</em>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Reseña Histórica & Valores -->
+                    <div class="mt-6 space-y-4">
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+                            <h3 class="font-bold text-slate-800 text-base mb-2 flex items-center">
+                                <i class="fa-solid fa-monument text-enm-green mr-2"></i> Reseña Histórica
+                            </h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Fundada en el espíritu educativo de Ocotepeque con raíces históricas desde <strong>1879</strong>, la Escuela Normal Mixta Bilingüe "Prof. Miguel Ángel Chinchilla Solís" se ha consolidado como el baluarte del conocimiento del occidente de Honduras. Lleva con orgullo el nombre del venerado maestro Miguel Ángel Chinchilla Solís, símbolo de entrega pedagógica.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-xl bg-emerald-50/50 border border-emerald-100">
+                            <h3 class="font-bold text-emerald-900 text-base mb-2 flex items-center">
+                                <i class="fa-solid fa-hands-holding-circle text-emerald-600 mr-2"></i> Valores Institucionales
+                            </h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs font-semibold">
+                                <div class="bg-white p-3 rounded-lg border border-emerald-200 text-emerald-800">Responsabilidad</div>
+                                <div class="bg-white p-3 rounded-lg border border-emerald-200 text-emerald-800">Excelencia</div>
+                                <div class="bg-white p-3 rounded-lg border border-emerald-200 text-emerald-800">Respeto</div>
+                                <div class="bg-white p-3 rounded-lg border border-emerald-200 text-emerald-800">Inclusión</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: FILOSOFÍA DOCENTE -->
+            <section id="filosofia" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100 flex items-center">
+                        <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i> Filosofía Pedagógica Docente
+                    </h2>
+                    <div class="space-y-4 text-sm text-slate-600">
+                        <p class="italic bg-slate-50 p-4 rounded-xl border-l-4 border-enm-blue text-slate-700">
+                            "Mi compromiso como docente, Prof. Roberto Alessandro Portillo López, se fundamenta en orientar el aprendizaje significativo, fomentando el pensamiento crítico, la investigación y la inclusión en el aula de clases."
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                            <div class="border border-slate-200 p-4 rounded-xl">
+                                <h4 class="font-bold text-slate-800 mb-1 text-base">Metodología de Enseñanza</h4>
+                                <ul class="list-disc list-inside space-y-1 text-xs">
+                                    <li>Aprendizaje Basado en Problemas (ABP).</li>
+                                    <li>Uso intensivo de TICs y recursos multimedia.</li>
+                                    <li>Evaluación formativa y continua.</li>
+                                    <li>Fomento del trabajo colaborativo bilingüe.</li>
+                                </ul>
+                            </div>
+                            <div class="border border-slate-200 p-4 rounded-xl">
+                                <h4 class="font-bold text-slate-800 mb-1 text-base">Objetivos Didácticos 2027</h4>
+                                <ul class="list-disc list-inside space-y-1 text-xs">
+                                    <li>Garantizar una planificación rigurosa de 42 semanas.</li>
+                                    <li>Aplicar planes remediales efectivos post-evaluación.</li>
+                                    <li>Mantener un canal activo de comunicación docente-estudiante.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: PLANIFICACIÓN DIDÁCTICA (10 BLOQUES) -->
+            <section id="planificacion" class="tab-content space-y-6">
+                <!-- Planning Header -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2.5 py-1 bg-laravel-500 text-white font-bold text-xs rounded-md">Laravel Style</span>
+                                <h2 class="text-xl font-bold text-slate-800">Planificación Didáctica 2027</h2>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">10 Bloques Mensuales (Febrero a Noviembre). Subida individual en PDF para cada semana y evaluación trimestral.</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="text-right">
+                                <div class="text-[11px] text-slate-500">Avance de Planificación:</div>
+                                <div class="text-xs font-bold text-slate-800" id="overall-percentage">0% Completado</div>
+                            </div>
+                            <div class="w-28 bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                                <div id="overall-progress-bar" class="bg-laravel-500 h-full w-0 transition-all duration-500"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 10 Month Cards Container -->
+                    <div class="mt-6 space-y-6" id="months-container">
+                        <!-- Javascript will dynamically build or augment months -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: ASISTENCIA Y CONTROL -->
+            <section id="asistencia" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100 flex items-center">
+                        <i class="fa-solid fa-clipboard-user text-indigo-500 mr-2"></i> Control de Asistencia Semanal
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-4">Registro general de asistencia del cuerpo estudiantil correspondiente al ciclo lectivo 2027.</p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left text-slate-600">
+                            <thead class="bg-slate-100 text-slate-700 font-bold uppercase border-b border-slate-200">
+                                <tr>
+                                    <th class="p-3">#</th>
+                                    <th class="p-3">Estudiante</th>
+                                    <th class="p-3">Grado/Sección</th>
+                                    <th class="p-3 text-center">Asistencias</th>
+                                    <th class="p-3 text-center">Inasistencias</th>
+                                    <th class="p-3 text-center">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-3 font-semibold">1</td>
+                                    <td class="p-3 font-medium text-slate-800">Alvarado Portillo, Carlos Eduardo</td>
+                                    <td class="p-3">10mo Bilingüe A</td>
+                                    <td class="p-3 text-center font-bold text-emerald-600">98%</td>
+                                    <td class="p-3 text-center font-bold text-slate-400">2</td>
+                                    <td class="p-3 text-center"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Regular</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">2</td>
+                                    <td class="p-3 font-medium text-slate-800">Chinchilla Valle, María Fernanda</td>
+                                    <td class="p-3">10mo Bilingüe A</td>
+                                    <td class="p-3 text-center font-bold text-emerald-600">100%</td>
+                                    <td class="p-3 text-center font-bold text-slate-400">0</td>
+                                    <td class="p-3 text-center"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">Excelente</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">3</td>
+                                    <td class="p-3 font-medium text-slate-800">Gómez Solís, Roberto José</td>
+                                    <td class="p-3">10mo Bilingüe A</td>
+                                    <td class="p-3 text-center font-bold text-amber-600">88%</td>
+                                    <td class="p-3 text-center font-bold text-amber-600">6</td>
+                                    <td class="p-3 text-center"><span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold">Alerta</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: CRITERIOS Y CALIFICACIONES -->
+            <section id="evaluacion" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100 flex items-center">
+                        <i class="fa-solid fa-chart-line text-purple-500 mr-2"></i> Registro de Criterios y Calificaciones
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="p-4 bg-purple-50 border border-purple-100 rounded-xl">
+                            <span class="text-xs text-purple-600 font-semibold uppercase">Acumulado Continuo</span>
+                            <div class="text-xl font-bold text-purple-900">70%</div>
+                            <span class="text-[11px] text-slate-500">Tareas, Proyectos, Guías</span>
+                        </div>
+                        <div class="p-4 bg-sky-50 border border-sky-100 rounded-xl">
+                            <span class="text-xs text-sky-600 font-semibold uppercase">Examen Escrito / Práctico</span>
+                            <div class="text-xl font-bold text-sky-900">30%</div>
+                            <span class="text-[11px] text-slate-500">Evaluación Parcial</span>
+                        </div>
+                        <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-xl">
+                            <span class="text-xs text-emerald-600 font-semibold uppercase">Plan Remedial</span>
+                            <div class="text-xl font-bold text-emerald-900">Recuperación</div>
+                            <span class="text-[11px] text-slate-500">Reforzamiento Trimestral</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: ANEXOS Y EVIDENCIAS -->
+            <section id="anexos" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100 flex items-center">
+                        <i class="fa-solid fa-images text-pink-500 mr-2"></i> Evidencias Fotográficas y Anexos
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <!-- Photo Card 1 -->
+                        <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+                            <img src="https://placehold.co/600x400/1980b6/ffffff?text=Feria+de+Ciencias+2027" class="w-full h-40 object-cover" alt="Evidencia">
+                            <div class="p-3">
+                                <h4 class="font-bold text-slate-800 text-xs">Feria Científica y Bilingüe</h4>
+                                <p class="text-[11px] text-slate-500">Presentación de proyectos estudiantiles ENMBPMACS.</p>
+                            </div>
+                        </div>
+                        <!-- Photo Card 2 -->
+                        <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+                            <img src="https://placehold.co/600x400/e2a30b/ffffff?text=Capacitacion+Docente" class="w-full h-40 object-cover" alt="Evidencia">
+                            <div class="p-3">
+                                <h4 class="font-bold text-slate-800 text-xs">Capacitación Pedagógica</h4>
+                                <p class="text-[11px] text-slate-500">Talleres de actualización docente con Prof. Roberto Portillo.</p>
+                            </div>
+                        </div>
+                        <!-- Photo Card 3 -->
+                        <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+                            <img src="https://placehold.co/600x400/72b025/ffffff?text=Actividades+Culturales" class="w-full h-40 object-cover" alt="Evidencia">
+                            <div class="p-3">
+                                <h4 class="font-bold text-slate-800 text-xs">Aniversario Ocotepeque</h4>
+                                <p class="text-[11px] text-slate-500">Participación cívica institucional de la Escuela Normal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- PDF Upload Modal -->
+    <div id="upload-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200 transform transition-all">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-file-pdf text-laravel-500 text-xl"></i>
+                    <div>
+                        <h3 class="font-bold text-sm" id="modal-title">Subir Planificación PDF</h3>
+                        <p class="text-[11px] text-slate-400" id="modal-subtitle">Mes / Semana</p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6 space-y-4">
+                <!-- Current status box -->
+                <div id="file-status-box" class="p-3 rounded-lg bg-slate-100 text-xs flex items-center justify-between">
+                    <span id="current-status-text" class="text-slate-600 font-medium">Estado: Sin archivo cargado</span>
+                    <span id="status-badge" class="bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded">Pendiente</span>
+                </div>
+
+                <!-- Dropzone Drag and Drop -->
+                <div id="dropzone" class="border-2 border-dashed border-slate-300 hover:border-enm-blue rounded-xl p-6 text-center cursor-pointer transition-colors bg-slate-50 hover:bg-sky-50/50">
+                    <input type="file" id="pdf-input" accept="application/pdf" class="hidden" onchange="handleFileSelect(event)">
+                    <div class="w-12 h-12 rounded-full bg-laravel-50 text-laravel-500 mx-auto flex items-center justify-center text-xl mb-2">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-700">Haz clic para seleccionar o arrastra un archivo PDF</p>
+                    <p class="text-[10px] text-slate-400 mt-1">Formato permitido: PDF (Máx. 10MB)</p>
+                </div>
+
+                <!-- Selected File Display Card -->
+                <div id="file-info-card" class="hidden p-3 border border-emerald-200 bg-emerald-50 rounded-xl flex items-center justify-between">
+                    <div class="flex items-center space-x-3 overflow-hidden">
+                        <i class="fa-solid fa-file-pdf text-emerald-600 text-2xl"></i>
+                        <div class="truncate">
+                            <p class="text-xs font-bold text-slate-800 truncate" id="selected-file-name">documento.pdf</p>
+                            <p class="text-[10px] text-slate-500" id="selected-file-size">1.2 MB</p>
+                        </div>
+                    </div>
+                    <button onclick="clearSelectedFile()" class="text-slate-400 hover:text-red-500 p-1">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+
+                <!-- Simulated PDF Viewer Canvas Preview Placeholder -->
+                <div id="pdf-preview-container" class="hidden border border-slate-200 rounded-xl p-3 bg-slate-900 text-white text-center">
+                    <div class="flex items-center justify-between text-xs text-slate-400 mb-2 border-b border-slate-800 pb-1">
+                        <span><i class="fa-solid fa-eye mr-1"></i> Vista Previa Simulada</span>
+                        <span class="text-emerald-400 text-[10px]">Documento Listo</span>
+                    </div>
+                    <div class="py-6 px-4 bg-slate-800 rounded border border-slate-700 text-slate-300">
+                        <i class="fa-solid fa-file-invoice text-4xl text-sky-400 mb-2"></i>
+                        <p class="text-xs font-semibold" id="preview-doc-title">Planificación Didáctica 2027</p>
+                        <p class="text-[10px] text-slate-400 mt-1">Docente: Roberto Alessandro Portillo López</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Buttons -->
+            <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex items-center justify-between">
+                <button onclick="closeModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-800 rounded-lg">
+                    Cancelar
+                </button>
+                <button id="save-pdf-btn" onclick="savePdfUpload()" class="px-5 py-2 text-xs font-semibold text-white bg-laravel-500 hover:bg-laravel-600 rounded-lg shadow-sm transition-colors flex items-center space-x-1 disabled:opacity-50" disabled>
+                    <i class="fa-solid fa-floppy-disk mr-1"></i> Guardar Archivo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toast-message">Operación completada con éxito.</span>
+    </div>
+
+    <script>
+        // Data structure for the 10 Months (Feb to Nov 2027)
+        const MONTHS_DATA = [
+            { id: 'feb', name: 'Febrero 2027', weeks: 4, hasExam: false },
+            { id: 'mar', name: 'Marzo 2027', weeks: 5, hasExam: true, quarter: '1er Trimestre' },
+            { id: 'abr', name: 'Abril 2027', weeks: 4, hasExam: false },
+            { id: 'may', name: 'Mayo 2027', weeks: 4, hasExam: false },
+            { id: 'jun', name: 'Junio 2027', weeks: 4, hasExam: true, quarter: '2do Trimestre' },
+            { id: 'jul', name: 'Julio 2027', weeks: 5, hasExam: false },
+            { id: 'ago', name: 'Agosto 2027', weeks: 4, hasExam: false },
+            { id: 'sep', name: 'Septiembre 2027', weeks: 4, hasExam: true, quarter: '3er Trimestre' },
+            { id: 'oct', name: 'Octubre 2027', weeks: 4, hasExam: false },
+            { id: 'nov', name: 'Noviembre 2027', weeks: 4, hasExam: true, quarter: '4to Trimestre / Cierre' }
+        ];
+
+        // Global State for Uploaded Files
+        // Keys will be e.g. 'feb-week-1', 'mar-exam', 'mar-remedial'
+        let uploadedFiles = {};
+        let activeKey = null;
+        let pendingFile = null;
+
+        // Initialize application on load
+        window.onload = function() {
+            renderPlanningMonths();
+            setupDropzone();
+            setupMobileSidebar();
+            updateOverallProgress();
+        };
+
+        // Navigation tab switching
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active', 'bg-slate-800', 'text-white'));
+            
+            const targetTab = document.getElementById(tabId);
+            if(targetTab) targetTab.classList.add('active');
+
+            const activeBtn = document.querySelector(`.nav-btn[data-tab="${tabId}"]`);
+            if(activeBtn) {
+                activeBtn.classList.add('active', 'bg-slate-800', 'text-white');
+            }
+
+            // Close sidebar on mobile after clicking
+            if(window.innerWidth < 768) {
+                toggleMobileSidebar(false);
+            }
+        }
+
+        // Render Months & Week Buttons
+        function renderPlanningMonths() {
+            const container = document.getElementById('months-container');
+            container.innerHTML = '';
+
+            MONTHS_DATA.forEach(month => {
+                const monthCard = document.createElement('div');
+                monthCard.className = 'border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm hover:shadow transition-shadow';
+
+                // Month Card Header
+                let headerHtml = `
+                    <div class="bg-slate-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-calendar-week text-laravel-500"></i>
+                            <h3 class="font-bold text-sm tracking-wide">${month.name}</h3>
+                            <span class="text-[10px] bg-slate-800 border border-slate-700 text-slate-300 px-2 py-0.5 rounded-full font-mono">${month.weeks} Semanas</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs">
+                            <span id="month-badge-${month.id}" class="text-[10px] bg-slate-800 text-amber-400 border border-slate-700 px-2.5 py-0.5 rounded-full font-medium">
+                                0 / ${month.weeks} Completadas
+                            </span>
+                        </div>
+                    </div>
+                `;
+
+                // Month Weeks Grid
+                let weeksHtml = `<div class="p-5 bg-slate-50/50 space-y-4">`;
+                weeksHtml += `<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">`;
+
+                for (let i = 1; i <= month.weeks; i++) {
+                    const key = `${month.id}-week-${i}`;
+                    const fileData = uploadedFiles[key];
+                    const isUploaded = !!fileData;
+
+                    weeksHtml += `
+                        <button id="btn-${key}" onclick="openUploadModal('${key}', '${month.name}', 'Semana ${i}')" 
+                            class="week-btn p-3 rounded-xl border ${isUploaded ? 'border-emerald-300 bg-emerald-50 text-emerald-900' : 'border-slate-200 bg-white hover:border-laravel-500 text-slate-700'} flex flex-col items-center justify-center text-center space-y-1.5 transition-all shadow-sm hover:shadow group">
+                            <div class="w-8 h-8 rounded-lg ${isUploaded ? 'bg-emerald-500 text-white' : 'bg-slate-100 group-hover:bg-laravel-500 group-hover:text-white text-slate-500'} flex items-center justify-center text-xs font-bold transition-colors">
+                                ${isUploaded ? '<i class="fa-solid fa-check"></i>' : i}
+                            </div>
+                            <span class="text-xs font-semibold">Semana ${i}</span>
+                            <span class="text-[10px] ${isUploaded ? 'text-emerald-600 font-medium' : 'text-slate-400'}">
+                                ${isUploaded ? 'PDF Cargado' : 'Subir PDF'}
+                            </span>
+                        </button>
+                    `;
+                }
+
+                weeksHtml += `</div>`;
+
+                // If quarterly month, add Examen and Plan Remedial buttons
+                if (month.hasExam) {
+                    const examKey = `${month.id}-exam`;
+                    const remedialKey = `${month.id}-remedial`;
+
+                    const hasExamFile = !!uploadedFiles[examKey];
+                    const hasRemedialFile = !!uploadedFiles[remedialKey];
+
+                    weeksHtml += `
+                        <div class="mt-4 pt-4 border-t border-slate-200/80">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-200">
+                                    <i class="fa-solid fa-award mr-1"></i> Módulo de Cierre (${month.quarter})
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <!-- Upload Exam Button -->
+                                <button id="btn-${examKey}" onclick="openUploadModal('${examKey}', '${month.name}', 'Examen Trimestral')" 
+                                    class="p-3.5 rounded-xl border ${hasExamFile ? 'border-indigo-300 bg-indigo-50 text-indigo-900' : 'border-amber-200 bg-amber-50/60 hover:bg-amber-100/80 text-amber-900'} flex items-center justify-between transition-all shadow-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-lg ${hasExamFile ? 'bg-indigo-600' : 'bg-amber-500'} text-white flex items-center justify-center text-xs">
+                                            <i class="fa-solid fa-file-pen"></i>
+                                        </div>
+                                        <div class="text-left">
+                                            <div class="text-xs font-bold">Subir Examen</div>
+                                            <div class="text-[10px] ${hasExamFile ? 'text-indigo-600 font-medium' : 'text-amber-700'}">${hasExamFile ? 'Examen Listo (PDF)' : 'Evaluación Trimestral'}</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid ${hasExamFile ? 'fa-circle-check text-indigo-600' : 'fa-upload text-amber-600'} text-sm"></i>
+                                </button>
+
+                                <!-- Upload Remedial Plan Button -->
+                                <button id="btn-${remedialKey}" onclick="openUploadModal('${remedialKey}', '${month.name}', 'Plan Remedial')" 
+                                    class="p-3.5 rounded-xl border ${hasRemedialFile ? 'border-purple-300 bg-purple-50 text-purple-900' : 'border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/80 text-emerald-900'} flex items-center justify-between transition-all shadow-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-lg ${hasRemedialFile ? 'bg-purple-600' : 'bg-emerald-600'} text-white flex items-center justify-center text-xs">
+                                            <i class="fa-solid fa-kit-medical"></i>
+                                        </div>
+                                        <div class="text-left">
+                                            <div class="text-xs font-bold">Subir Plan Remedial</div>
+                                            <div class="text-[10px] ${hasRemedialFile ? 'text-purple-600 font-medium' : 'text-emerald-700'}">${hasRemedialFile ? 'Plan Cargado (PDF)' : 'Reforzamiento Académico'}</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid ${hasRemedialFile ? 'fa-circle-check text-purple-600' : 'fa-upload text-emerald-600'} text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                weeksHtml += `</div>`;
+                monthCard.innerHTML = headerHtml + weeksHtml;
+                container.appendChild(monthCard);
+            });
+        }
+
+        // Open Upload Modal
+        function openUploadModal(key, monthTitle, itemTitle) {
+            activeKey = key;
+            pendingFile = null;
+
+            document.getElementById('modal-title').textContent = `Cargar PDF - ${itemTitle}`;
+            document.getElementById('modal-subtitle').textContent = `${monthTitle} • Docente: Roberto Alessandro Portillo López`;
+            
+            const existingFile = uploadedFiles[key];
+            const statusBox = document.getElementById('current-status-text');
+            const badge = document.getElementById('status-badge');
+            const fileInfoCard = document.getElementById('file-info-card');
+            const previewContainer = document.getElementById('pdf-preview-container');
+            const saveBtn = document.getElementById('save-pdf-btn');
+
+            if (existingFile) {
+                statusBox.textContent = `Archivo actual: ${existingFile.name}`;
+                badge.textContent = "Cargado";
+                badge.className = "bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded";
+
+                document.getElementById('selected-file-name').textContent = existingFile.name;
+                document.getElementById('selected-file-size').textContent = existingFile.size;
+                document.getElementById('preview-doc-title').textContent = existingFile.name;
+
+                fileInfoCard.classList.remove('hidden');
+                previewContainer.classList.remove('hidden');
+                saveBtn.disabled = false;
+            } else {
+                statusBox.textContent = "Estado: Sin archivo cargado";
+                badge.textContent = "Pendiente";
+                badge.className = "bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded";
+
+                fileInfoCard.classList.add('hidden');
+                previewContainer.classList.add('hidden');
+                saveBtn.disabled = true;
+            }
+
+            document.getElementById('upload-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('upload-modal').classList.add('hidden');
+            activeKey = null;
+            pendingFile = null;
+        }
+
+        // File dropzone logic
+        function setupDropzone() {
+            const dropzone = document.getElementById('dropzone');
+            const fileInput = document.getElementById('pdf-input');
+
+            dropzone.addEventListener('click', () => fileInput.click());
+
+            dropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropzone.classList.add('border-laravel-500', 'bg-red-50/50');
+            });
+
+            dropzone.addEventListener('dragleave', () => {
+                dropzone.classList.remove('border-laravel-500', 'bg-red-50/50');
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('border-laravel-500', 'bg-red-50/50');
+                if (e.dataTransfer.files.length) {
+                    processSelectedFile(e.dataTransfer.files[0]);
+                }
+            });
+        }
+
+        function handleFileSelect(event) {
+            if (event.target.files.length) {
+                processSelectedFile(event.target.files[0]);
+            }
+        }
+
+        function processSelectedFile(file) {
+            if (file.type !== 'application/pdf') {
+                showToast('Por favor, selecciona un archivo en formato PDF.', 'error');
+                return;
+            }
+
+            pendingFile = {
+                name: file.name,
+                size: (file.size / (1024 * 1024)).toFixed(2) + ' MB',
+                date: new Date().toLocaleDateString()
+            };
+
+            document.getElementById('selected-file-name').textContent = pendingFile.name;
+            document.getElementById('selected-file-size').textContent = pendingFile.size;
+            document.getElementById('preview-doc-title').textContent = pendingFile.name;
+
+            document.getElementById('file-info-card').classList.remove('hidden');
+            document.getElementById('pdf-preview-container').classList.remove('hidden');
+            document.getElementById('save-pdf-btn').disabled = false;
+        }
+
+        function clearSelectedFile() {
+            pendingFile = null;
+            if (activeKey && uploadedFiles[activeKey]) {
+                delete uploadedFiles[activeKey];
+                showToast('Archivo eliminado.', 'info');
+            }
+            document.getElementById('file-info-card').classList.add('hidden');
+            document.getElementById('pdf-preview-container').classList.add('hidden');
+            document.getElementById('save-pdf-btn').disabled = true;
+            document.getElementById('status-badge').textContent = "Pendiente";
+            document.getElementById('status-badge').className = "bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded";
+            
+            renderPlanningMonths();
+            updateOverallProgress();
+        }
+
+        function savePdfUpload() {
+            if (!activeKey) return;
+
+            if (pendingFile) {
+                uploadedFiles[activeKey] = pendingFile;
+            }
+
+            renderPlanningMonths();
+            updateOverallProgress();
+            closeModal();
+            showToast('Planificación PDF subida exitosamente.', 'success');
+        }
+
+        // Calculate progress stats
+        function updateOverallProgress() {
+            const totalWeeks = MONTHS_DATA.reduce((acc, m) => acc + m.weeks, 0);
+            let uploadedCount = 0;
+
+            MONTHS_DATA.forEach(month => {
+                let monthCount = 0;
+                for(let i=1; i<=month.weeks; i++) {
+                    if (uploadedFiles[`${month.id}-week-${i}`]) {
+                        monthCount++;
+                        uploadedCount++;
+                    }
+                }
+                const badge = document.getElementById(`month-badge-${month.id}`);
+                if (badge) {
+                    badge.textContent = `${monthCount} / ${month.weeks} Semanas`;
+                    if (monthCount === month.weeks) {
+                        badge.className = "text-[10px] bg-emerald-800 text-emerald-200 border border-emerald-700 px-2.5 py-0.5 rounded-full font-medium";
+                    }
+                }
+            });
+
+            const percentage = Math.round((uploadedCount / totalWeeks) * 100);
+            const progressBar = document.getElementById('overall-progress-bar');
+            const progressText = document.getElementById('overall-percentage');
+            const uploadStats = document.getElementById('upload-progress-text');
+
+            if (progressBar) progressBar.style.width = `${percentage}%`;
+            if (progressText) progressText.textContent = `${percentage}% Completado`;
+            if (uploadStats) uploadStats.textContent = `${uploadedCount} de ${totalWeeks} Semanas Cargadas`;
+        }
+
+        // Sidebar mobile responsiveness toggle
+        function setupMobileSidebar() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            menuBtn.addEventListener('click', () => toggleMobileSidebar(true));
+            overlay.addEventListener('click', () => toggleMobileSidebar(false));
+        }
+
+        function toggleMobileSidebar(open) {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            if (open) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // Notification Toast
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMessage.textContent = message;
+
+            if (type === 'success') {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400 text-base";
+            } else if (type === 'error') {
+                toastIcon.className = "fa-solid fa-circle-exclamation text-red-400 text-base";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-info text-sky-400 text-base";
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
